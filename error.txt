@@ -1,0 +1,272 @@
+
+E:\GitHub\claim-ui-vite>npm run build
+
+> claim-ui@0.2.0 build
+> tsc -b && vite build
+
+src/components/admin/AirdropAdmin.tsx:4:28 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+4 import { useAccount } from 'wagmi'
+                             ~~~~~~~
+
+src/components/admin/RewardEngineAdmin.tsx:4:28 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+4 import { useAccount } from 'wagmi'
+                             ~~~~~~~
+
+src/components/admin/StakingAdmin.tsx:24:45 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+24 import { useAccount, useWalletClient } from 'wagmi'
+                                               ~~~~~~~
+
+src/components/admin/StakingAdmin.tsx:117:80 - error TS2538: Type 'undefined' cannot be used as an index type.
+
+117       const stakingAddress = CONTRACT_CONFIG.address[CONTRACT_TYPES.STAKING]?.[chainId];
+                                                                                   ~~~~~~~
+
+src/components/admin/StakingAdmin.tsx:181:80 - error TS2538: Type 'undefined' cannot be used as an index type.
+
+181       const stakingAddress = CONTRACT_CONFIG.address[CONTRACT_TYPES.STAKING]?.[chainId];
+                                                                                   ~~~~~~~
+
+src/components/admin/StakingAdmin.tsx:240:80 - error TS2538: Type 'undefined' cannot be used as an index type.
+
+240       const stakingAddress = CONTRACT_CONFIG.address[CONTRACT_TYPES.STAKING]?.[chainId];
+                                                                                   ~~~~~~~
+
+src/components/admin/StoragePoolAdmin.tsx:4:63 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+4 import { useAccount, useWriteContract, usePublicClient } from 'wagmi'
+                                                                ~~~~~~~
+
+src/components/admin/StoragePoolAdmin.tsx:52:28 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+52 import { useChainId } from 'wagmi'
+                              ~~~~~~~
+
+src/components/admin/TestnetMiningAdmin.tsx:4:28 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+4 import { useAccount } from 'wagmi'
+                             ~~~~~~~
+
+src/components/admin/TestnetMiningAdmin.tsx:851:66 - error TS2345: Argument of type 'bigint | null' is not assignable to parameter of type 'BigNumberish'.
+  Type 'null' is not assignable to type 'BigNumberish'.
+
+851                       Total Required Tokens: {ethers.formatEther(tgeStatus.totalTokens)} FULA
+                                                                     ~~~~~~~~~~~~~~~~~~~~~
+
+src/components/admin/TokenAdmin.tsx:4:28 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+4 import { useAccount } from 'wagmi'
+                             ~~~~~~~
+
+src/components/admin/TokenAdmin.tsx:228:53 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+228                       onChange={(e) => setFormData((prev) => ({ ...prev, role: e.target.value }))}
+                                                        ~~~~
+
+src/components/admin/TokenAdmin.tsx:244:53 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+244                       onChange={(e) => setFormData((prev) => ({ ...prev, transactionLimit: e.target.value }))}
+                                                        ~~~~
+
+src/components/admin/TokenAdmin.tsx:258:53 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+258                       onChange={(e) => setFormData((prev) => ({ ...prev, quorum: e.target.value }))}
+                                                        ~~~~
+
+src/components/admin/TokenAdmin.tsx:311:41 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+311                             setFormData(prev => ({
+                                            ~~~~
+
+src/components/admin/TokenAdmin.tsx:360:53 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+360                       onChange={(e) => setFormData((prev) => ({ ...prev, whitelistAddress: e.target.value }))}
+                                                        ~~~~
+
+src/components/admin/TokenAdmin.tsx:452:53 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+452                       onChange={(e) => setFormData((prev) => ({ ...prev, bridgeAmount: e.target.value }))}
+                                                        ~~~~
+
+src/components/admin/TokenAdmin.tsx:463:53 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+463                       onChange={(e) => setFormData((prev) => ({ ...prev, chainId: e.target.value }))}
+                                                        ~~~~
+
+src/components/admin/TokenAdmin.tsx:473:53 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+473                       onChange={(e) => setFormData((prev) => ({ ...prev, nonce: e.target.value }))}
+                                                        ~~~~
+
+src/components/admin/TokenAdmin.tsx:515:51 - error TS7006: Parameter 'event' implicitly has an 'any' type.
+
+515                         {data.bridgeOpEvents.map((event, index) => (
+                                                      ~~~~~
+
+src/components/admin/TokenAdmin.tsx:515:58 - error TS7006: Parameter 'index' implicitly has an 'any' type.
+
+515                         {data.bridgeOpEvents.map((event, index) => (
+                                                             ~~~~~
+
+src/components/admin/TokenAdmin.tsx:560:53 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+560                       onChange={(e) => setFormData((prev) => ({ ...prev, transferTo: e.target.value }))}
+                                                        ~~~~
+
+src/components/admin/TokenAdmin.tsx:571:53 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+571                       onChange={(e) => setFormData((prev) => ({ ...prev, transferAmount: e.target.value }))}
+                                                        ~~~~
+
+src/components/admin/TokenAdmin.tsx:608:53 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+608                       onChange={(e) => setFormData((prev) => ({ ...prev, chainId: e.target.value }))}
+                                                        ~~~~
+
+src/components/admin/TokenAdmin.tsx:618:53 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+618                       onChange={(e) => setFormData((prev) => ({ ...prev, nonce: e.target.value }))}
+                                                        ~~~~
+
+src/components/admin/TokenAdmin.tsx:850:53 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+850                       onChange={(e) => setFormData((prev) => ({ ...prev, roleAddress: e.target.value }))}
+                                                        ~~~~
+
+src/components/admin/TokenAdmin.tsx:862:53 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+862                       onChange={(e) => setFormData((prev) => ({ ...prev, role: e.target.value }))}
+                                                        ~~~~
+
+src/components/admin/TokenAdmin.tsx:900:53 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+900                       onChange={(e) => setFormData((prev) => ({ ...prev, roleType: e.target.value }))}
+                                                        ~~~~
+
+src/components/admin/TokenAdmin.tsx:947:53 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+947                       onChange={(e) => setFormData((prev) => ({ ...prev, cancelMethod: e.target.value }))}
+                                                        ~~~~
+
+src/components/admin/TokenAdmin.tsx:961:55 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+961                         onChange={(e) => setFormData((prev) => ({ ...prev, cancelTxHash: e.target.value }))}
+                                                          ~~~~
+
+src/components/admin/TokenAdmin.tsx:1004:55 - error TS7006: Parameter 'prev' implicitly has an 'any' type.
+
+1004                         onChange={(e) => setFormData((prev) => ({ ...prev, cancelNonce: e.target.value }))}
+                                                           ~~~~
+
+src/components/admin/VestingAdmin.tsx:4:28 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+4 import { useAccount } from 'wagmi'
+                             ~~~~~~~
+
+src/components/common/ConnectButton.tsx:2:83 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+2 import { useAccount, useConnect, useDisconnect, useChainId, useSwitchChain } from 'wagmi'
+                                                                                    ~~~~~~~
+
+src/components/common/ConnectButton.tsx:85:32 - error TS7006: Parameter 'conn' implicitly has an 'any' type.
+
+85               {connectors.map((conn) => (
+                                  ~~~~
+
+src/components/common/ConnectButton.tsx:166:26 - error TS7006: Parameter 'chain' implicitly has an 'any' type.
+
+166             {chains.map((chain) => (
+                             ~~~~~
+
+src/components/vesting/ClaimButton.tsx:7:46 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+7 import { useWaitForTransactionReceipt } from 'wagmi'
+                                               ~~~~~~~
+
+src/components/vesting/ClaimButton.tsx:61:48 - error TS7006: Parameter 'v' implicitly has an 'any' type.
+
+61       const valueArray = values.split(',').map(v => v.trim());
+                                                  ~
+
+src/components/vesting/VestingInfo.tsx:19:45 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+19 import { useReadContract, useAccount } from 'wagmi'
+                                               ~~~~~~~
+
+src/components/vesting/VestingInfo.tsx:179:32 - error TS18048: 'vestingData.substrateRewards' is possibly 'undefined'.
+
+179       const substrateRewards = vestingData.substrateRewards.amount || BigInt(0);
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/config/chains.ts:2:73 - error TS2307: Cannot find module 'wagmi/chains' or its corresponding type declarations.
+
+2 import { mainnet, sepolia, base, baseSepolia, iotex, skaleEuropa } from 'wagmi/chains'
+                                                                          ~~~~~~~~~~~~~~
+
+src/contexts/ContractContext.tsx:2:74 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+2 import { useAccount, usePublicClient, useBalance, useWalletClient } from 'wagmi'
+                                                                           ~~~~~~~
+
+src/hooks/useAdminContract.ts:4:118 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+4 import { useReadContract, useWriteContract, useAccount, usePublicClient, useSimulateContract, useWalletClient } from 'wagmi'
+                                                                                                                       ~~~~~~~
+
+src/hooks/useStoragePoolData.ts:2:33 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+2 import { usePublicClient } from 'wagmi'
+                                  ~~~~~~~
+
+src/hooks/useStoragePoolData.ts:5:28 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+5 import { useChainId } from 'wagmi'
+                             ~~~~~~~
+
+src/hooks/useTokenBalance.ts:1:33 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+1 import { useReadContract } from 'wagmi'
+                                  ~~~~~~~
+
+src/hooks/useVestingContract.ts:4:80 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+4 import { useReadContract, useWriteContract, useAccount, usePublicClient } from 'wagmi'
+                                                                                 ~~~~~~~
+
+src/hooks/useWalletInfo.ts:1:52 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+1 import { useAccount, useBalance, useChainId } from 'wagmi'
+                                                     ~~~~~~~
+
+src/lib/wagmi.ts:1:36 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+1 import { createConfig, http } from 'wagmi'
+                                     ~~~~~~~
+
+src/lib/wagmi.ts:2:57 - error TS2307: Cannot find module 'wagmi/connectors' or its corresponding type declarations.
+
+2 import { injected, coinbaseWallet, walletConnect } from 'wagmi/connectors'
+                                                          ~~~~~~~~~~~~~~~~~~
+
+src/main.tsx:5:31 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+5 import { WagmiProvider } from 'wagmi'
+                                ~~~~~~~
+
+src/pages/AdminPage.tsx:20:28 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+20 import { useAccount } from 'wagmi'
+                              ~~~~~~~
+
+src/pages/HomePage.tsx:7:55 - error TS2307: Cannot find module 'wagmi' or its corresponding type declarations.
+
+7 import { useAccount, useChainId, useWatchAsset } from 'wagmi'
+                                                        ~~~~~~~
+
+
+Found 52 errors.
+
+
+E:\GitHub\claim-ui-vite>
