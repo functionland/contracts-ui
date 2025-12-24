@@ -21,7 +21,7 @@ import { ethers } from 'ethers'
 import { CONTRACT_CONFIG } from '@/config/contracts'
 import { CONTRACT_TYPES } from '@/config/constants'
 import { STAKING_ABI } from '@/config/abis'
-import { useAccount, useWalletClient } from 'wagmi'
+import { useConnection, useWalletClient } from 'wagmi'
 import { walletClientToSigner } from '@/lib/ethersAdapters'
 
 interface UpgradeProposal {
@@ -33,7 +33,7 @@ interface UpgradeProposal {
 
 export const StakingAdmin = () => {
   const { contracts, chainId, address: connectedWalletAddress } = useContractContext()
-  const { address: accountAddress, isConnected } = useAccount()
+  const { address: accountAddress, isConnected } = useConnection()
   const { data: walletClient } = useWalletClient()
   
   // Get contract address from config for debugging

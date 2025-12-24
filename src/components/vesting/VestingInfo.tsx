@@ -16,7 +16,7 @@ import { useContractContext } from '@/contexts/ContractContext';
 import { CONTRACT_TYPES } from '@/config/constants';
 import type { VestingData } from '@/types/vesting'
 import { useEffect, useState } from 'react'
-import { useReadContract, useAccount } from 'wagmi'
+import { useReadContract, useConnection } from 'wagmi'
 import { CONTRACT_CONFIG } from '@/config/contracts'
 
 interface VestingInfoProps {
@@ -41,7 +41,7 @@ export function VestingInfo({ vestingData }: VestingInfoProps) {
   
   const theme = useTheme();
   const { activeContract } = useContractContext();
-  const { chainId } = useAccount();
+  const { chainId } = useConnection();
   console.log({activeContract, chainId});
   const isTestnetMining = activeContract === CONTRACT_TYPES.TESTNET_MINING;
   const [ratio, setRatio] = useState<number | null>(null);

@@ -1,7 +1,7 @@
 
 
 import { useState, useEffect } from 'react'
-import { useAccount, useWriteContract, usePublicClient } from 'wagmi'
+import { useConnection, useWriteContract, usePublicClient } from 'wagmi'
 import {
   Box,
   Typography,
@@ -57,7 +57,7 @@ import { CONTRACT_TYPES } from '@/config/constants'
 
 // Contract Diagnostics Component
 function ContractDiagnostics({ contractAddress }: { contractAddress: string }) {
-  const { address } = useAccount()
+  const { address } = useConnection()
   const publicClient = usePublicClient()
   const [diagnostics, setDiagnostics] = useState<any>(null)
   const [loading, setLoading] = useState(false)
@@ -137,7 +137,7 @@ function ContractDiagnostics({ contractAddress }: { contractAddress: string }) {
 }
 
 export function StoragePoolAdmin() {
-  const { isConnected, address } = useAccount()
+  const { isConnected, address } = useConnection()
   const chainId = useChainId()
   const publicClient = usePublicClient()
   const { setActiveContract } = useContractContext()

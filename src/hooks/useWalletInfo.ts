@@ -1,8 +1,8 @@
-import { useAccount, useBalance, useChainId } from 'wagmi'
+import { useConnection, useBalance, useChainId } from 'wagmi'
 import { useState, useEffect } from 'react'
 
 export function useWalletInfo() {
-  const { address, isConnected } = useAccount()
+  const { address, isConnected } = useConnection()
   const chainId = useChainId()
   const [ensName, setEnsName] = useState<string | null>(null)
 

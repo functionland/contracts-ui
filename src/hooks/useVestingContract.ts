@@ -1,7 +1,7 @@
 
 
 import { useState, useEffect } from 'react'
-import { useReadContract, useWriteContract, useAccount, usePublicClient } from 'wagmi'
+import { useReadContract, useWriteContract, useConnection, usePublicClient } from 'wagmi'
 import { type Address } from 'viem'
 import { CONTRACT_CONFIG } from '@/config/contracts'
 import { CONTRACT_TYPES } from '@/config/constants'
@@ -12,7 +12,7 @@ import { useContractContext } from '@/contexts/ContractContext'
 
 export function useVestingContract() {
   const { activeContract } = useContractContext()
-  const { address: userAddress, chainId } = useAccount()
+  const { address: userAddress, chainId } = useConnection()
   const [vestingData, setVestingData] = useState<Map<number, VestingData>>(new Map())
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)

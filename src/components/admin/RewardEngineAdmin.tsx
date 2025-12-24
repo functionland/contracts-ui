@@ -1,7 +1,7 @@
 
 
 import { useState, useEffect } from 'react'
-import { useAccount } from 'wagmi'
+import { useConnection } from 'wagmi'
 import {
   Box,
   Typography,
@@ -24,7 +24,7 @@ import { useContractContext } from '@/contexts/ContractContext'
 import { CONTRACT_TYPES } from '@/config/constants'
 
 export function RewardEngineAdmin() {
-  const { isConnected } = useAccount()
+  const { isConnected } = useConnection()
   const { setActiveContract } = useContractContext()
   const [error, setError] = useState<string | null>(null)
   const [formData, setFormData] = useState({

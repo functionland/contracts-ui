@@ -1,7 +1,7 @@
 
 
 import { useState, useEffect } from 'react'
-import { useReadContract, useWriteContract, useAccount, usePublicClient, useSimulateContract, useWalletClient } from 'wagmi'
+import { useReadContract, useWriteContract, useConnection, usePublicClient, useSimulateContract, useWalletClient } from 'wagmi'
 import { type Address, parseAbiItem, type PublicClient } from 'viem'
 import { CONTRACT_CONFIG } from '@/config/contracts'
 import { CONTRACT_TYPES } from '@/config/constants'
@@ -107,7 +107,7 @@ const getRoleHash = (role: string): string => {
 
 export function useAdminContract() {
   const { activeContract } = useContractContext()
-  const { address: userAddress, chainId } = useAccount()
+  const { address: userAddress, chainId } = useConnection()
   const [error, setError] = useState<string | null>(null)
   const publicClient = usePublicClient()
   const { writeContractAsync } = useWriteContract()

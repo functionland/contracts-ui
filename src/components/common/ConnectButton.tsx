@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useAccount, useConnect, useDisconnect, useChainId, useSwitchChain } from 'wagmi'
+import { useConnection, useConnect, useDisconnect, useChainId, useSwitchChain, useConnectors, useChains } from 'wagmi'
 import { 
   Button, 
   Menu, 
@@ -26,11 +26,13 @@ import { getNetworkName } from '@/config/chains'
 import { formatAddress } from '@/utils/formatters'
 
 export function ConnectButton() {
-  const { address, isConnected, connector } = useAccount()
-  const { connect, connectors, isPending, error } = useConnect()
+  const { address, isConnected, connector } = useConnection()
+  const connect = useConnect()
   const { disconnect } = useDisconnect()
   const chainId = useChainId()
-  const { chains, switchChain, isPending: isSwitching } = useSwitchChain()
+  const connectors = useConnectors()
+  const chains = useChains()
+  const switchChain = useSwitchChain()
   
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [walletDialogOpen, setWalletDialogOpen] = useState(false)
@@ -50,7 +52,7 @@ export function ConnectButton() {
   }
 
   const handleSwitchChain = (newChainId: number) => {
-    switchChain({ chainId: newChainId })
+    switchChain.mutate({ chainId: newChainId })
     setChainDialogOpen(false)
   }
 
@@ -59,9 +61,9 @@ export function ConnectButton() {
       <>
         <Button
           variant="contained"
-          startIcon={isPending ? <CircularProgress size={20} color="inherit" /> : <AccountBalanceWalletIcon />}
+          startIcon={connect.isPending ? <CircularProgress size={20} color="inherit" /> : <AccountBalanceWalletIcon />}
           onClick={() => setWalletDialogOpen(true)}
-          disabled={isPending}
+          disabled={connect.isPending}
           sx={{
             borderRadius: 2,
             textTransform: 'none',
@@ -70,15 +72,15 @@ export function ConnectButton() {
             py: 1,
           }}
         >
-          {isPending ? 'Connecting...' : 'Connect Wallet'}
+          {connect.isPending ? 'Connecting...' : 'Connect Wallet'}
         </Button>
 
         <Dialog open={walletDialogOpen} onClose={() => setWalletDialogOpen(false)} maxWidth="xs" fullWidth>
           <DialogTitle>Connect Wallet</DialogTitle>
           <DialogContent>
-            {error && (
+            {connect.error && (
               <Alert severity="error" sx={{ mb: 2 }}>
-                {error.message}
+                {connect.error.message}
               </Alert>
             )}
             <List>
@@ -86,10 +88,10 @@ export function ConnectButton() {
                 <ListItem key={conn.uid} disablePadding>
                   <ListItemButton
                     onClick={() => {
-                      connect({ connector: conn })
+                      connect.mutate({ connector: conn })
                       setWalletDialogOpen(false)
                     }}
-                    disabled={isPending}
+                    disabled={connect.isPending}
                   >
                     <ListItemIcon>
                       <AccountBalanceWalletIcon />
@@ -157,7 +159,7 @@ export function ConnectButton() {
       <Dialog open={chainDialogOpen} onClose={() => setChainDialogOpen(false)} maxWidth="xs" fullWidth>
         <DialogTitle>Switch Network</DialogTitle>
         <DialogContent>
-          {isSwitching && (
+          {switchChain.isPending && (
             <Box sx={{ display: 'flex', justifyContent: 'center', py: 2 }}>
               <CircularProgress size={24} />
             </Box>
@@ -168,7 +170,7 @@ export function ConnectButton() {
                 <ListItemButton
                   onClick={() => handleSwitchChain(chain.id)}
                   selected={chain.id === chainId}
-                  disabled={isSwitching}
+                  disabled={switchChain.isPending}
                 >
                   <ListItemText 
                     primary={chain.name} 

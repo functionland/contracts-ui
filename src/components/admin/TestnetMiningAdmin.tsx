@@ -1,7 +1,7 @@
 
 
 import { useState, useEffect } from 'react'
-import { useAccount } from 'wagmi'
+import { useConnection } from 'wagmi'
 import { 
   Box,
   Typography,
@@ -28,7 +28,7 @@ import { useAdminContract } from '../../hooks/useAdminContract'
 import { CONTRACT_TYPES, PROPOSAL_TYPES, ROLES, ROLE_NAMES } from '../../config/constants'
 
 export function TestnetMiningAdmin() {
-  const { isConnected } = useAccount()
+  const { isConnected } = useConnection()
   const [error, setError] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     capId: '',

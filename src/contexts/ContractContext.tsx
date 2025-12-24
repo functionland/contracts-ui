@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, ReactNode, useMemo } from 'react'
-import { useAccount, usePublicClient, useBalance, useWalletClient } from 'wagmi'
+import { useConnection, usePublicClient, useBalance, useWalletClient } from 'wagmi'
 import { type Address } from 'viem'
 import { ethers } from 'ethers'
 import { ContractType, CONTRACT_CONFIG } from '@/config/contracts'
@@ -30,7 +30,7 @@ const ContractContext = createContext<ContractContextType | undefined>(undefined
 export function ContractProvider({ children }: { children: ReactNode }) {
   const [activeContract, setActiveContract] = useState<ContractType>(CONTRACT_TYPES.VESTING)
   
-  const { address, chainId, isConnected } = useAccount()
+  const { address, chainId, isConnected } = useConnection()
   const publicClient = usePublicClient()
   const { data: balance } = useBalance({
     address,

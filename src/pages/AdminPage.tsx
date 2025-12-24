@@ -17,12 +17,12 @@ import { RewardEngineAdmin } from '@/components/admin/RewardEngineAdmin'
 import { CONTRACT_TYPES, ContractType } from '@/config/constants'
 import { useContractContext } from '@/contexts/ContractContext'
 import { ConnectButton } from '@/components/common/ConnectButton'
-import { useAccount } from 'wagmi'
+import { useConnection } from 'wagmi'
 
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState('token')
   const { setActiveContract } = useContractContext()
-  const { isConnected } = useAccount()
+  const { isConnected } = useConnection()
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: string) => {
     setActiveTab(newValue)

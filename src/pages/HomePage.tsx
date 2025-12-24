@@ -4,7 +4,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom'
 import { useContractContext } from '@/contexts/ContractContext'
 import { ContractType } from '@/config/contracts'
 import { useThemeContext } from '@/contexts/ThemeContext'
-import { useAccount, useChainId, useWatchAsset } from 'wagmi'
+import { useConnection, useChainId, useWatchAsset } from 'wagmi'
 import { VestingDashboard } from '@/components/vesting/VestingDashboard'
 import { ConnectButton } from '@/components/common/ConnectButton'
 import { ErrorBoundary } from '@/components/common/ErrorBoundary'
@@ -45,7 +45,7 @@ interface ManualImportInfo {
 }
 
 export default function HomePage() {
-  const { isConnected, connector } = useAccount()
+  const { isConnected, connector } = useConnection()
   const chainId = useChainId()
   const theme = useTheme()
   const { isDarkMode, toggleTheme } = useThemeContext()

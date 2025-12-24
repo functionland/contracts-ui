@@ -1,7 +1,7 @@
 
 
 import { useState, useEffect } from 'react'
-import { useAccount } from 'wagmi'
+import { useConnection } from 'wagmi'
 import { ethers } from 'ethers'
 import { 
   Box,
@@ -1030,7 +1030,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
 export function TokenAdmin() {
   console.log('TokenAdmin component rendered');
 
-  const { isConnected } = useAccount()
+  const { isConnected } = useConnection()
   const { setActiveContract } = useContractContext()
   const [error, setError] = useState<string | null>(null)
   const [formData, setFormData] = useState({
