@@ -19,7 +19,7 @@ const queryClient = new QueryClient({
 })
 
 // Get base path for router (matches vite.config.ts base)
-const basename = import.meta.env.PROD ? '/claim-ui' : '/'
+const basename = import.meta.env.PROD ? '/' : '/'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
