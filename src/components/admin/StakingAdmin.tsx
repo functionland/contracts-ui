@@ -114,7 +114,7 @@ export const StakingAdmin = () => {
       console.log('Proposing upgrade to:', newImplementation)
       
       const signer = walletClientToSigner(walletClient)
-      const stakingAddress = CONTRACT_CONFIG.address[CONTRACT_TYPES.STAKING]?.[chainId];
+      const stakingAddress = CONTRACT_CONFIG.address[CONTRACT_TYPES.STAKING]?.[chainId!];
       
       if (!stakingAddress) {
         throw new Error(`No staking contract address found for chain ${chainId}`);
@@ -178,7 +178,7 @@ export const StakingAdmin = () => {
       console.log('Approving upgrade to:', pendingUpgrade.implementation)
       
       const signer = walletClientToSigner(walletClient)
-      const stakingAddress = CONTRACT_CONFIG.address[CONTRACT_TYPES.STAKING]?.[chainId];
+      const stakingAddress = CONTRACT_CONFIG.address[CONTRACT_TYPES.STAKING]?.[chainId!];
       
       if (!stakingAddress) {
         throw new Error(`No staking contract address found for chain ${chainId}`);
@@ -237,7 +237,7 @@ export const StakingAdmin = () => {
       console.log('Cancelling upgrade proposal for:', pendingUpgrade.implementation)
 
       const signer = walletClientToSigner(walletClient)
-      const stakingAddress = CONTRACT_CONFIG.address[CONTRACT_TYPES.STAKING]?.[chainId];
+      const stakingAddress = CONTRACT_CONFIG.address[CONTRACT_TYPES.STAKING]?.[chainId!];
 
       if (!stakingAddress) {
         throw new Error(`No staking contract address found for chain ${chainId}`);

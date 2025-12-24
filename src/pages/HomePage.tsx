@@ -9,6 +9,7 @@ import { VestingDashboard } from '@/components/vesting/VestingDashboard'
 import { ConnectButton } from '@/components/common/ConnectButton'
 import { ErrorBoundary } from '@/components/common/ErrorBoundary'
 import ClientOnly from '@/components/common/ClientOnly'
+import { VersionFooter } from '@/components/common/VersionFooter'
 import { 
   Container, 
   Typography, 
@@ -400,8 +401,8 @@ export default function HomePage() {
           </Container>
         </Box>
 
-        <Dialog 
-          open={showManualImportModal} 
+        <Dialog
+          open={showManualImportModal}
           onClose={() => setShowManualImportModal(false)}
           maxWidth="sm"
           fullWidth
@@ -413,35 +414,37 @@ export default function HomePage() {
             </Typography>
             <List>
               <ListItem>
-                <ListItemText 
-                  primary="Contract Address" 
-                  secondary={manualImportInfo?.contractAddress} 
-                  secondaryTypographyProps={{ 
-                    sx: { wordBreak: 'break-all' } 
+                <ListItemText
+                  primary="Contract Address"
+                  secondary={manualImportInfo?.contractAddress}
+                  secondaryTypographyProps={{
+                    sx: { wordBreak: 'break-all' }
                   }}
                 />
               </ListItem>
               <ListItem>
-                <ListItemText 
-                  primary="Symbol" 
-                  secondary={manualImportInfo?.symbol} 
+                <ListItemText
+                  primary="Symbol"
+                  secondary={manualImportInfo?.symbol}
                 />
               </ListItem>
               <ListItem>
-                <ListItemText 
-                  primary="Decimals" 
-                  secondary={manualImportInfo?.decimals} 
+                <ListItemText
+                  primary="Decimals"
+                  secondary={manualImportInfo?.decimals}
                 />
               </ListItem>
               <ListItem>
-                <ListItemText 
-                  primary="Network" 
-                  secondary={manualImportInfo?.network} 
+                <ListItemText
+                  primary="Network"
+                  secondary={manualImportInfo?.network}
                 />
               </ListItem>
             </List>
           </DialogContent>
         </Dialog>
+
+        <VersionFooter />
       </Box>
     </ErrorBoundary>
   )

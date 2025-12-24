@@ -84,7 +84,7 @@ export function ConnectButton() {
               </Alert>
             )}
             <List>
-              {connectors.map((conn) => (
+              {connectors.map((conn: any) => (
                 <ListItem key={conn.uid} disablePadding>
                   <ListItemButton
                     onClick={() => {
@@ -165,7 +165,7 @@ export function ConnectButton() {
             </Box>
           )}
           <List>
-            {chains.map((chain) => (
+            {chains.map((chain: any) => (
               <ListItem key={chain.id} disablePadding>
                 <ListItemButton
                   onClick={() => handleSwitchChain(chain.id)}

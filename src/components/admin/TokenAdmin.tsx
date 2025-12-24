@@ -47,6 +47,27 @@ interface TimeConfig {
   whitelistLockTime: number;
 }
 
+interface TokenFormData {
+  walletAddress: string;
+  transactionLimit: string;
+  tgeTime: string;
+  proposalId: string;
+  role: string;
+  quorum: string;
+  whitelistAddress: string;
+  chainId: string;
+  nonce: string;
+  bridgeAmount: string;
+  transferTo: string;
+  transferAmount: string;
+  roleAddress: string;
+  roleType: string;
+  cancelNonce: string;
+  cancelTxHash: string;
+  cancelMethod: string;
+  txDetails: { nonce: number; from: string; status: string } | null;
+}
+
 function DisconnectedView() {
   return (
     <Box sx={{ textAlign: 'center', py: 4 }}>
@@ -225,7 +246,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                       fullWidth
                       label="Role"
                       value={formData.role || ''}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, role: e.target.value }))}
+                      onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, role: e.target.value }))}
                       margin="normal"
                     >
                       {roleOptions.map((option) => (
@@ -241,7 +262,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                       label="Transaction Limit (ETH)"
                       type="number"
                       value={formData.transactionLimit || ''}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, transactionLimit: e.target.value }))}
+                      onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, transactionLimit: e.target.value }))}
                       margin="normal"
                       inputProps={{
                         step: "0.000000000000000001" // Allow for 18 decimal places
@@ -255,7 +276,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                       label="Quorum"
                       type="number"
                       value={formData.quorum || ''}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, quorum: e.target.value }))}
+                      onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, quorum: e.target.value }))}
                       margin="normal"
                       inputProps={{
                         min: "1",
@@ -308,7 +329,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                               transactionLimit: formattedLimit,
                               quorum: result.quorum.toString()
                             });
-                            setFormData(prev => ({
+                            setFormData((prev: TokenFormData) => ({
                               ...prev,
                               transactionLimit: formattedLimit,
                               quorum: result.quorum.toString()
@@ -357,7 +378,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                       fullWidth
                       label="Address to Whitelist"
                       value={formData.whitelistAddress || ''}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, whitelistAddress: e.target.value }))}
+                      onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, whitelistAddress: e.target.value }))}
                       margin="normal"
                     />
                   </Grid>
@@ -449,7 +470,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                       label="Amount"
                       type="number"
                       value={formData.bridgeAmount || ''}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, bridgeAmount: e.target.value }))}
+                      onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, bridgeAmount: e.target.value }))}
                       margin="normal"
                       helperText="Amount of tokens to mint/burn"
                     />
@@ -460,7 +481,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                       label="Chain ID"
                       type="number"
                       value={formData.chainId || ''}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, chainId: e.target.value }))}
+                      onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, chainId: e.target.value }))}
                       margin="normal"
                     />
                   </Grid>
@@ -470,7 +491,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                       label="Nonce"
                       type="number"
                       value={formData.nonce || ''}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, nonce: e.target.value }))}
+                      onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, nonce: e.target.value }))}
                       margin="normal"
                     />
                   </Grid>
@@ -512,7 +533,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                         </TableRow>
                       </TableHead>
                       <TableBody>
-                        {data.bridgeOpEvents.map((event, index) => (
+                        {data.bridgeOpEvents.map((event: any, index: number) => (
                           <TableRow key={`${event.chainId}-${event.timestamp}-${index}`}>
                             <TableCell>
                               {event.opType === 1 ? (
@@ -557,7 +578,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                       fullWidth
                       label="Recipient Address"
                       value={formData.transferTo || ''}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, transferTo: e.target.value }))}
+                      onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, transferTo: e.target.value }))}
                       margin="normal"
                       helperText="Address must be whitelisted"
                     />
@@ -568,7 +589,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                       label="Amount"
                       type="number"
                       value={formData.transferAmount || ''}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, transferAmount: e.target.value }))}
+                      onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, transferAmount: e.target.value }))}
                       margin="normal"
                       helperText="Amount in FULA tokens"
                     />
@@ -605,7 +626,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                       label="Chain ID"
                       type="number"
                       value={formData.chainId || ''}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, chainId: e.target.value }))}
+                      onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, chainId: e.target.value }))}
                       margin="normal"
                     />
                   </Grid>
@@ -615,7 +636,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                       label="Nonce"
                       type="number"
                       value={formData.nonce || ''}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, nonce: e.target.value }))}
+                      onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, nonce: e.target.value }))}
                       margin="normal"
                     />
                   </Grid>
@@ -847,7 +868,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                       fullWidth
                       label="Address"
                       value={formData.roleAddress || ''}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, roleAddress: e.target.value }))}
+                      onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, roleAddress: e.target.value }))}
                       margin="normal"
                       placeholder="0x..."
                       helperText="Address to check or modify role"
@@ -859,7 +880,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                       fullWidth
                       label="Role"
                       value={formData.role || ''}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, role: e.target.value }))}
+                      onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, role: e.target.value }))}
                       margin="normal"
                       helperText="Select the role to check or modify"
                     >
@@ -897,7 +918,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                       fullWidth
                       label="Proposal Type"
                       value={formData.roleType || '1'}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, roleType: e.target.value }))}
+                      onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, roleType: e.target.value }))}
                       margin="normal"
                       sx={{ mb: 2 }}
                     >
@@ -944,7 +965,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                       fullWidth
                       label="Cancel by"
                       value={formData.cancelMethod || 'hash'}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, cancelMethod: e.target.value }))}
+                      onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, cancelMethod: e.target.value }))}
                       margin="normal"
                     >
                       <MenuItem value="hash">Transaction Hash</MenuItem>
@@ -958,7 +979,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                         fullWidth
                         label="Transaction Hash"
                         value={formData.cancelTxHash || ''}
-                        onChange={(e) => setFormData((prev) => ({ ...prev, cancelTxHash: e.target.value }))}
+                        onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, cancelTxHash: e.target.value }))}
                         margin="normal"
                         placeholder="0x..."
                         helperText="Enter the transaction hash of the pending transaction you want to cancel"
@@ -1001,7 +1022,7 @@ function ConnectedView({ error, setError, formData, setFormData, handlers, state
                         label="Transaction Nonce"
                         type="number"
                         value={formData.cancelNonce || ''}
-                        onChange={(e) => setFormData((prev) => ({ ...prev, cancelNonce: e.target.value }))}
+                        onChange={(e) => setFormData((prev: TokenFormData) => ({ ...prev, cancelNonce: e.target.value }))}
                         margin="normal"
                         inputProps={{ min: 0 }}
                         helperText="Enter the nonce of the pending transaction you want to cancel"
@@ -1033,7 +1054,7 @@ export function TokenAdmin() {
   const { isConnected } = useConnection()
   const { setActiveContract } = useContractContext()
   const [error, setError] = useState<string | null>(null)
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<TokenFormData>({
     walletAddress: '',
     transactionLimit: '',
     tgeTime: '',
@@ -1051,7 +1072,7 @@ export function TokenAdmin() {
     cancelNonce: '',
     cancelTxHash: '',
     cancelMethod: 'hash', // Default to cancelling by hash
-    txDetails: null as { nonce: number, from: string, status: string } | null,
+    txDetails: null,
   })
 
   // Set the active contract to TOKEN when the component mounts
@@ -1126,10 +1147,10 @@ export function TokenAdmin() {
       const details = await getTransactionDetails(formData.cancelTxHash);
       
       // Update form data with transaction details
-      setFormData(prev => ({ ...prev, txDetails: details }));
+      setFormData((prev: TokenFormData) => ({ ...prev, txDetails: details }));
     } catch (error: any) {
       setError(error.message);
-      setFormData(prev => ({ ...prev, txDetails: null }));
+      setFormData((prev: TokenFormData) => ({ ...prev, txDetails: null }));
     } finally {
       setIsLookingUpTx(false);
     }
@@ -1142,7 +1163,7 @@ export function TokenAdmin() {
       await handleCancelByNonce(formData.txDetails.nonce);
       
       // Clear form
-      setFormData(prev => ({ ...prev, cancelTxHash: '', txDetails: null }));
+      setFormData((prev: TokenFormData) => ({ ...prev, cancelTxHash: '', txDetails: null }));
     } catch (error: any) {
       setError(error.message);
     }
@@ -1161,7 +1182,7 @@ export function TokenAdmin() {
       alert(`Transaction cancellation submitted. Hash: ${txHash}`);
       
       // Clear form
-      setFormData(prev => ({ ...prev, cancelNonce: '' }));
+      setFormData((prev: TokenFormData) => ({ ...prev, cancelNonce: '' }));
     } catch (error: any) {
       setError(error.message);
     } finally {
@@ -1175,7 +1196,7 @@ export function TokenAdmin() {
       setIsWhitelisting(true)
       await addToWhitelist(formData.whitelistAddress)
       // Clear the form and refetch the whitelist
-      setFormData(prev => ({ ...prev, whitelistAddress: '' }))
+      setFormData((prev: TokenFormData) => ({ ...prev, whitelistAddress: '' }))
       await refetchWhitelistedAddresses()
     } catch (error: any) {
       setError(error.message)
@@ -1190,7 +1211,7 @@ export function TokenAdmin() {
       setIsSettingLimit(true)
       await handleSetRoleTransactionLimit(formData.role, formData.transactionLimit)
       // Clear form
-      setFormData(prev => ({
+      setFormData((prev: TokenFormData) => ({
         ...prev,
         role: '',
         transactionLimit: '',
@@ -1208,7 +1229,7 @@ export function TokenAdmin() {
       setIsSettingLimit(true)
       await handleSetRoleQuorum(formData.role, formData.quorum)
       // Clear form
-      setFormData(prev => ({
+      setFormData((prev: TokenFormData) => ({
         ...prev,
         role: '',
         quorum: '',
@@ -1269,7 +1290,7 @@ export function TokenAdmin() {
       await setBridgeOpNonce(chainId, nonce)
 
       // Reset form
-      setFormData(prev => ({
+      setFormData((prev: TokenFormData) => ({
         ...prev,
         chainId: '',
         nonce: '',
@@ -1293,7 +1314,7 @@ export function TokenAdmin() {
       await performBridgeOp(bridgeAmount, chainId, nonce, opType)
 
       // Reset form
-      setFormData(prev => ({
+      setFormData((prev: TokenFormData) => ({
         ...prev,
         bridgeAmount: '',
         chainId: '',
@@ -1317,7 +1338,7 @@ export function TokenAdmin() {
       await transferFromContract(transferTo, transferAmount)
 
       // Reset form
-      setFormData(prev => ({
+      setFormData((prev: TokenFormData) => ({
         ...prev,
         transferTo: '',
         transferAmount: '',
@@ -1359,7 +1380,7 @@ export function TokenAdmin() {
       await createRoleProposal(proposalType, roleAddress, role)
       
       // Reset form
-      setFormData(prev => ({
+      setFormData((prev: TokenFormData) => ({
         ...prev,
         roleAddress: '',
         role: '',

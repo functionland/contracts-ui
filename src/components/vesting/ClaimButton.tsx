@@ -58,7 +58,7 @@ export const ClaimButton: FC<ClaimButtonProps> = ({
     const errorMatch = error.message?.match(/Error: ([a-zA-Z]+)\((.*?)\)\s*\((.*?)\)/);
     if (errorMatch) {
       const [_, errorName, paramTypes, values] = errorMatch;
-      const valueArray = values.split(',').map(v => v.trim());
+      const valueArray = values.split(',').map((v: string) => v.trim());
   
       switch (errorName) {
         case 'NothingToClaim':

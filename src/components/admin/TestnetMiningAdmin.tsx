@@ -848,7 +848,7 @@ export function TestnetMiningAdmin() {
                       Timestamp: {new Date(Number(tgeStatus.timestamp) * 1000).toLocaleString()}
                     </Typography>
                     <Typography variant="body2">
-                      Total Required Tokens: {ethers.formatEther(tgeStatus.totalTokens)} FULA
+                      Total Required Tokens: {ethers.formatEther(tgeStatus.totalTokens ?? BigInt(0))} FULA
                     </Typography>
                   </>
                 ) : (

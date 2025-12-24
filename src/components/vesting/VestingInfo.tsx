@@ -176,7 +176,7 @@ export function VestingInfo({ vestingData }: VestingInfoProps) {
 
   const getTotalAllocation = () => {
     if (isTestnetMining) {
-      const substrateRewards = vestingData.substrateRewards.amount || BigInt(0);
+      const substrateRewards = vestingData.substrateRewards?.amount || BigInt(0);
       console.log("Substrate rewards:", substrateRewards.toString());
       
       if (ratio && ratio > 0) {
