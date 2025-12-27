@@ -12,6 +12,7 @@ import { AirdropAdmin } from '@/components/admin/AirdropAdmin'
 import { TestnetMiningAdmin } from '@/components/admin/TestnetMiningAdmin'
 import { TokenAdmin } from '@/components/admin/TokenAdmin'
 import { StakingAdmin } from '@/components/admin/StakingAdmin'
+import { StakingEngineLinearAdmin } from '@/components/admin/StakingEngineLinearAdmin'
 import { StoragePoolAdmin } from '@/components/admin/StoragePoolAdmin'
 import { RewardEngineAdmin } from '@/components/admin/RewardEngineAdmin'
 import { CONTRACT_TYPES, ContractType } from '@/config/constants'
@@ -63,6 +64,7 @@ export default function AdminPage() {
                 <Tab label="Airdrop" value={CONTRACT_TYPES.AIRDROP} />
                 <Tab label="Testnet Mining" value={CONTRACT_TYPES.TESTNET_MINING} />
                 <Tab label="Staking" value={CONTRACT_TYPES.STAKING} />
+                <Tab label="VIP Staking" value={CONTRACT_TYPES.STAKING_ENGINE_LINEAR} />
                 <Tab label="Storage Pool" value={CONTRACT_TYPES.STORAGE_POOL} />
                 <Tab label="Reward Engine" value={CONTRACT_TYPES.REWARD_ENGINE} />
               </Tabs>
@@ -74,6 +76,7 @@ export default function AdminPage() {
               {activeTab === CONTRACT_TYPES.AIRDROP && <AirdropAdmin />}
               {activeTab === CONTRACT_TYPES.TESTNET_MINING && <TestnetMiningAdmin />}
               {activeTab === CONTRACT_TYPES.STAKING && <StakingAdmin />}
+              {activeTab === CONTRACT_TYPES.STAKING_ENGINE_LINEAR && <StakingEngineLinearAdmin />}
               {activeTab === CONTRACT_TYPES.STORAGE_POOL && <StoragePoolAdmin />}
               {activeTab === CONTRACT_TYPES.REWARD_ENGINE && <RewardEngineAdmin />}
             </Paper>

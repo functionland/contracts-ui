@@ -59,6 +59,7 @@ export const CONTRACT_TYPES = {
   STAKING: 'staking',
   STORAGE_POOL: 'storage_pool',
   REWARD_ENGINE: 'reward_engine',
+  STAKING_ENGINE_LINEAR: 'staking_engine_linear',
 } as const
 
 export type ContractType = typeof CONTRACT_TYPES[keyof typeof CONTRACT_TYPES]
